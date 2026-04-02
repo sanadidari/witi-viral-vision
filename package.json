@@ -1,0 +1,18 @@
+{
+  "name": "witi-viral-vision",
+  "version": "1.0.0",
+  "description": "AI-powered video factory for Wix stores",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build:client": "npm run build --prefix client",
+    "move:client": "shx rm -rf server/dist && shx cp -r client/dist server/dist",
+    "postinstall": "npm run build:client && npm run move:client",
+    "start": "node server/index.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "shx": "^0.3.4"
+  }
+}
